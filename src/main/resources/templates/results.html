@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>View All Contacts</title>
+	</head>
+	<body>
+		<form>
+			<table>
+				<tr th:each="currentContact : ${contacts}" >
+	 				<td th:text="${currentLocation.id}" />
+	    			<td th:text="${currentLocation.planet}" />
+	    			<td th:text="${currentLocation.country}" />
+	    			<td th:text="${currentLocation.address.street}" />
+	   		 		<td th:text="${currentLocation.address.city}" />
+	    			<td th:text="${currentLocation.address.state}" />
+	   				<td><a th:href="@{/edit/{id}(id=${currentLocation.id})}">Edit</a></td>
+	    			<td><a th:href="@{/delete/{id}(id=${currentLocation.id})}">Delete</a></td>
+				</tr>
+			</table>
+		</form>
+	<a href="../inputlocation">Add a new contact</a>
+	</body>
+</html>
