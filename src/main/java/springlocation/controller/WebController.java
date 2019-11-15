@@ -25,9 +25,19 @@ public class WebController {
 		return "results";
 	}
 	
+	@GetMapping("/inputContact")
+	public String addNewContact(Model model) {
+		//The GetMapping is for when the form is retrieved
+		//repo.save(l); <--Can't save an object until you have one
+		Location l = new Location();
+		model.addAttribute("location", l);
+		return "input";
+	}
+	
 	@PostMapping("/inputContact")
 	public String addNewContact(@ModelAttribute Location l, Model model) {
-		repo.save(l);
+		//the PostMapping method runs after the form is submitted
+		repo.save(l); 
 		model.addAttribute("location", repo.findAll());
 		return "results";
 	}
